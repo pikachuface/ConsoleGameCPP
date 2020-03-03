@@ -5,7 +5,10 @@
 ## Setup the game
 - GCC Windows/Linux
 
-You will need to have gcc installed and the working directory should be the folder with .cpp files. Then you jsu write these commands and the game will be compiled. Depending on your system there should be file called Snakegame.exe/.o
+- You will need to have gcc installed and the working directory should be the folder with .cpp files.
+- Then you just write these commands and the game will be compiled. 
+- Depending on your system there should be file called Snakegame.exe/.o
+
 ```bash
 $ gcc -c *.cpp 
 $ gcc -c *.c
