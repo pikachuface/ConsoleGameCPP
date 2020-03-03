@@ -15,7 +15,7 @@ If *.cpp doesnt work you will need to write the files **separately**.
 
 - Visual Studio Windows
 
-You will need to have Visual Studio installed with C++ SDK. When you have Visual Studio installed all you need to do is copy all the files is your project and run the program. 
+You will need to have Visual Studio installed with C++ SDK. When you have Visual Studio installed all you need to do is make new C++ project and then copy all the files in your project and run the program. 
 
 **enjoy ~w~**
 
