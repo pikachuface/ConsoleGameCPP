@@ -1,5 +1,5 @@
 /ConsoleGameCPP/Debug/
 /Debug
-*.vcxproj*
-*.sln
 /.vs/
+*.sln
+*.vcxproj*

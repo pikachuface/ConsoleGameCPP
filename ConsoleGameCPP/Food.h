@@ -3,7 +3,7 @@
 #include"ansi_escapes.h"
 #include"RandomNum.h"
 
-class Food :GameObject
+class Food : public GameObject
 {
 public:
 	int value;
@@ -11,7 +11,7 @@ private:
 	int valueRange[2];
 public:
 	//Ctor
-	Food(unsigned int maxValue, unsigned int minValue, int posX, int posY, char asciRender, Colors color=Colors::WHITE_TXT);
+	Food(int minValue, int maxvalue, int posX, int posY, char asciRender, Colors txtColor = Colors::WHITE_TXT, Colors bckColor = Colors::BLACK_BKG);
 	//If food gets eaten
 	void getEaten();
 private:

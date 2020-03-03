@@ -1,10 +1,12 @@
 #include<iostream>
 #include<thread>
 #include<conio.h>
+//Tools
+#include"Tools.h"
+#include"Settings.h"
+//Game Objects
 #include"Snake.h"
 #include"Food.h"
-#include"ansi_escapes.h"
-#include"RandomNum.h"
 
 using namespace std;
 
@@ -14,7 +16,7 @@ void KeyRegistering();
 GameObject makeGameObject(int posX, int posY, char render, Colors color);
 
 Snake snake(makeGameObject(Settings::mapWidth/2, Settings::mapHeight/2, '#', Colors::GREEN_TXT));
-Food food();
+Food food(10,20,0,0,'@',Colors::RED_TXT, Colors::RED_BKG);
 
 
 bool gameOver = false;
@@ -23,7 +25,7 @@ thread rendering;
 
 int main()
 {
-	Settings::MakeBorder();
+	Settings::MakeBorder(Colors::YELLOW_TXT, YELLOW_BKG);
 
 	keyregster = thread(&KeyRegistering);
 	rendering = thread(&Rendering);
@@ -35,10 +37,6 @@ void GameLoop()
 {
 	while (!gameOver)
 	{
-
-
-
-
 	}
 }
 
@@ -46,7 +44,8 @@ void Rendering()
 {
 	while (!gameOver)
 	{
-
+		food.render();
+		
 
 	}
 }

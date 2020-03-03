@@ -1,5 +1,5 @@
 #include "Food.h"
-Food::Food(unsigned int maxValue, unsigned int minValue, int posX, int posY, char asciRender, Colors color) :GameObject(posX, posY, asciRender, color)
+Food::Food(int minValue, int maxValue, int posX, int posY, char asciRender, Colors txtColor, Colors bckColor) :GameObject(posX, posY, asciRender, txtColor, bckColor)
 {
 	this->valueRange[0] = minValue;
 	this->valueRange[1] = maxValue;

@@ -1,14 +1,15 @@
 #include "GameObject.h"
 
 
-GameObject::GameObject(int posX, int posY, char asciRender, Colors color)
+GameObject::GameObject(int posX, int posY, char asciRender, Colors txtColor, Colors bckColor)
 {
 	this->posX = posX;
 	this->posY = posY;
 	this->lastPosX = -69;
 	this->lastPosY = -69;
 	this->asciRender = asciRender;
-	this->color = color;
+	this->txtColor = txtColor;
+	this->bckColor = bckColor;
 }
 
 void GameObject::saveLastPos(void)
@@ -36,15 +37,12 @@ void GameObject::render()
 {
 	if (this->changedPos)
 	{
-		////Delete old char
-		//moveCursorTo(lastPosY+Settings::borderThicknes, lastPosX+Settings::borderThicknes);
-		//resetColor();
-		//printf("%c", Settings::defaultChar);
-		
-		//Render new one
-		setTextColor(color);
-		moveCursorTo(posY+Settings::borderThicknes, posX+Settings::borderThicknes);
-		printf("%c", asciRender);
+		//Delete old char
+		Tools::printCharacter(this->posX, this->posY, Settings::defaultChar);
+		//Print new one
+		Tools::printCharacter(this->posX, this->posY, this->asciRender, this->txtColor, this->bckColor);
+
+		changedPos = false;
 	}
 }
 
