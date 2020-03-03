@@ -36,13 +36,14 @@ void GameObject::render()
 {
 	if (this->changedPos)
 	{
-		//Delete old char
-		_moveTo(lastPosY, lastPosX);
-		resetColor();
-		printf("%c", Settings::defaultChar);
+		////Delete old char
+		//moveCursorTo(lastPosY+Settings::borderThicknes, lastPosX+Settings::borderThicknes);
+		//resetColor();
+		//printf("%c", Settings::defaultChar);
+		
 		//Render new one
 		setTextColor(color);
-		_moveTo(posY, posX);
+		moveCursorTo(posY+Settings::borderThicknes, posX+Settings::borderThicknes);
 		printf("%c", asciRender);
 	}
 }

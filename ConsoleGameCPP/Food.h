@@ -10,13 +10,14 @@ public:
 private:
 	int valueRange[2];
 public:
+	//Ctor
 	Food(unsigned int maxValue, unsigned int minValue, int posX, int posY, char asciRender, Colors color=Colors::WHITE_TXT);
+	//If food gets eaten
+	void getEaten();
+private:
 	//Changes location of object to random Pos
-	void ChangeLoacation(unsigned int mapSize);
+	void changeLoacation();
 	//Changes Value to random number in range
-	void ChangeValue();
-
-
-
+	void changeValue();
 };
 

@@ -13,7 +13,7 @@ void Rendering();
 void KeyRegistering();
 GameObject makeGameObject(int posX, int posY, char render, Colors color);
 
-Snake snake(makeGameObject(10, 10, '#', Colors::GREEN_TXT));
+Snake snake(makeGameObject(Settings::mapWidth/2, Settings::mapHeight/2, '#', Colors::GREEN_TXT));
 Food food();
 
 
@@ -23,6 +23,8 @@ thread rendering;
 
 int main()
 {
+	Settings::MakeBorder();
+
 	keyregster = thread(&KeyRegistering);
 	rendering = thread(&Rendering);
 	GameLoop();

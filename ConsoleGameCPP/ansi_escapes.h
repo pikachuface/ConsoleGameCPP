@@ -95,7 +95,7 @@ static inline void moveLeft(int positions) {
     printf("\x1b[%dD", positions);
 }
 
-static inline void _moveTo(int row, int col) {
+static inline void moveCursorTo(int row, int col) {
     printf("\x1b[%d;%df", row, col);
 }
 
