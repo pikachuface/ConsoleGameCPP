@@ -1,6 +1,6 @@
 # Snake game that runs in Console
 
-**info**: the game is **not** complete
+**info**: the game is **not** completed
 
 ## Setup the game
 - GCC Windows/Linux
