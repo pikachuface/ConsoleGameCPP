@@ -5,7 +5,7 @@ class Settings
 public:
 	static const unsigned int mapWidth = 40;
 	static const unsigned int mapHeight = 20;
-	static const unsigned int clockTime = 150;
+	static const unsigned int timerInterval = 80;
 	static const char defaultChar = ' ';
 	static const char borderChar = '0';
 	static const int borderCompensation = 3;

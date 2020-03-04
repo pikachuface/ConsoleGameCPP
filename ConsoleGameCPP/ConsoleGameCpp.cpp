@@ -1,9 +1,11 @@
 #include<iostream>
 #include<thread>
 #include<conio.h>
+#include<chrono>
 //Tools
 #include"Tools.h"
 #include"Settings.h"
+#include"Timer.h"
 //Game Objects
 #include"Snake.h"
 #include"Food.h"
@@ -15,20 +17,22 @@ void Rendering();
 void KeyRegistering();
 GameObject makeGameObject(int posX, int posY, char render, Colors color);
 
-Snake snake(makeGameObject(Settings::mapWidth/2, Settings::mapHeight/2, '#', Colors::GREEN_TXT));
-Food food(10,20,0,0,'@',Colors::RED_TXT, Colors::RED_BKG);
+Snake snake(makeGameObject(Settings::mapWidth / 2, Settings::mapHeight / 2, '#', Colors::GREEN_TXT));
+Food food(10, 20, 0, 0, '@', Colors::RED_TXT, Colors::RED_BKG);
 
-
+Timer timer;
 bool gameOver = false;
 thread keyregster;
 thread rendering;
 
+double timeDelta;
+
 int main()
 {
 	Settings::MakeBorder(Colors::YELLOW_TXT, YELLOW_BKG);
-
 	keyregster = thread(&KeyRegistering);
 	rendering = thread(&Rendering);
+	timer.restart();
 	GameLoop();
 	return 0;
 }
@@ -37,8 +41,12 @@ void GameLoop()
 {
 	while (!gameOver)
 	{
-		
-		snake.Move();
+		if (timeDelta*1000 > Settings::timerInterval)
+		{
+			timeDelta = 0;
+			snake.Move();
+		}
+		timeDelta += timer.restart();
 	}
 }
 
@@ -70,7 +78,7 @@ void KeyRegistering()
 			snake.ChangeDir(Directions::Down);
 			break;
 		case'w':
-			snake.ChangeDir(Directions::Right);
+			snake.ChangeDir(Directions::Up);
 			break;
 		}
 	}

@@ -9,7 +9,26 @@ Snake::Snake(GameObject head, int lives)
 
 void Snake::ChangeDir(Directions dir)
 {
-	if (dir != Directions::None) curDir = dir;
+	if (dir != Directions::None)
+	{
+		if (dir==Directions::Down&&lastDir!=Directions::Up)
+		{
+			curDir = dir;
+		}
+		else if (dir == Directions::Up && lastDir != Directions::Down)
+		{
+			curDir = dir;
+		}
+		else if (dir == Directions::Right && lastDir != Directions::Left)
+		{
+			curDir = dir;
+		}
+		else if (dir == Directions::Left && lastDir != Directions::Right)
+		{
+			curDir = dir;
+		}
+
+	}
 }
 
 void Snake::Move()
