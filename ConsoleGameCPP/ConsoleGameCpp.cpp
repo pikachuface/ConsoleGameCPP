@@ -37,6 +37,8 @@ void GameLoop()
 {
 	while (!gameOver)
 	{
+		
+		snake.Move();
 	}
 }
 
@@ -45,8 +47,10 @@ void Rendering()
 	while (!gameOver)
 	{
 		food.render();
-		
-
+		for (int i = 0; i < snake.body.size(); i++)
+		{
+			snake.body[i].render();
+		}
 	}
 }
 
@@ -54,8 +58,21 @@ void KeyRegistering()
 {
 	while (!gameOver)
 	{
-
-
+		switch (tolower(_getch()))
+		{
+		case'a':
+			snake.ChangeDir(Directions::Left);
+			break;
+		case'd':
+			snake.ChangeDir(Directions::Right);
+			break;
+		case's':
+			snake.ChangeDir(Directions::Down);
+			break;
+		case'w':
+			snake.ChangeDir(Directions::Right);
+			break;
+		}
 	}
 }
 
