@@ -12,6 +12,7 @@ private:
 	Directions lastDir = Directions::None;
 public:
 	Snake(GameObject head, int lives = 1);
+	Snake();
 	void ChangeDir(Directions newDir);
 	void Move();
 private:

@@ -17,7 +17,7 @@ void Rendering();
 void KeyRegistering();
 GameObject makeGameObject(int posX, int posY, char render, Colors color);
 
-Snake snake(makeGameObject(Settings::mapWidth / 2, Settings::mapHeight / 2, '#', Colors::GREEN_TXT));
+Snake snake;
 Food food(10, 20, 0, 0, '@', Colors::RED_TXT, Colors::RED_BKG);
 
 Timer timer;
@@ -32,6 +32,7 @@ int main()
 	Settings::MakeBorder(Colors::YELLOW_TXT, YELLOW_BKG);
 	keyregster = thread(&KeyRegistering);
 	rendering = thread(&Rendering);
+	snake = Snake::Snake(makeGameObject(Settings::mapWidth / 2, Settings::mapHeight / 2, '#', Colors::GREEN_TXT));
 	timer.restart();
 	GameLoop();
 	return 0;

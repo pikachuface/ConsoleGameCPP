@@ -33,16 +33,19 @@ void GameObject::moveBy(int offsetX, int offsetY)
 	this->posY += offsetY;
 }
 
-void GameObject::render(bool deleteOldOne = true)
+void GameObject::render(bool deleteOldOne)
 {
 	if (this->changedPos)
 	{
-		//Delete old char
-		Tools::printCharacter(this->lastPosX, this->lastPosY, Settings::defaultChar);
+		if (deleteOldOne)
+		{
+			//Delete old char
+			Tools::printCharacter(this->lastPosX, this->lastPosY, Settings::defaultChar);
+		}
 		//Print new one
 		Tools::printCharacter(this->posX, this->posY, this->asciRender, this->txtColor, this->bckColor);
 
-		changedPos = false;
+		this->changedPos = false;
 	}
 }
 

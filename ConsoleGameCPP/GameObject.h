@@ -17,7 +17,7 @@ public:
 	GameObject(int posX, int posY, char render, Colors txtColor = Colors::WHITE_TXT, Colors bckColor = Colors::BLACK_BKG);
 	void moveTo(int posX, int PosY);
 	void moveBy(int x, int y);
-	void render();
+	void render(bool deleteOldOne = true);
 private:
 	void saveLastPos();
 	
