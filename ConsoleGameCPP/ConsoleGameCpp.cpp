@@ -108,7 +108,7 @@ char getInput()
 	return _getch();
 }
 #else
-char getch(void) {
+char getInput() {
 	struct termios oldattr, newattr;
 	int ch;
 	tcgetattr(STDIN_FILENO, &oldattr);
