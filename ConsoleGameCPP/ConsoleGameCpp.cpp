@@ -8,6 +8,7 @@
 #include<stdio.h>
 #include<ctype.h>
 #include<thread>
+#include<pthread.h>
 #include<chrono>
 //Tools
 #include"Tools.h"
@@ -26,12 +27,12 @@ void KeyRegistering();
 char getInput();
 GameObject makeGameObject(int posX, int posY, char render, Colors color);
 
-Snake snake;
+Snake snake(makeGameObject(Settings::mapWidth / 2, Settings::mapHeight / 2, '#', Colors::GREEN_TXT));
 Food food(10, 20, 0, 0, '@', Colors::RED_TXT, Colors::RED_BKG);
 
 Timer timer;
 bool gameOver = false;
-thread keyregster;
+thread keyregister;
 thread rendering;
 
 double timeDelta;
@@ -39,9 +40,10 @@ double timeDelta;
 int main()
 {
 	Settings::MakeBorder(Colors::YELLOW_TXT, YELLOW_BKG);
-	keyregster = thread(&KeyRegistering);
+	keyregister = thread(&KeyRegistering);
+	keyregister.detach();
 	rendering = thread(&Rendering);
-	snake = Snake::Snake(makeGameObject(Settings::mapWidth / 2, Settings::mapHeight / 2, '#', Colors::GREEN_TXT));
+	keyregister.detach();
 	timer.restart();
 	GameLoop();
 	return 0;
@@ -76,7 +78,7 @@ void KeyRegistering()
 {
 	while (!gameOver)
 	{
-		switch (tolower(_getch()))
+		switch (tolower(getInput()))
 		{
 		case'a':
 			snake.ChangeDir(Directions::Left);
@@ -117,7 +119,8 @@ char getInput() {
 	tcsetattr(STDIN_FILENO, TCSANOW, &newattr);
 	ch = getchar();
 	tcsetattr(STDIN_FILENO, TCSANOW, &oldattr);
-	return (char)ch;
+	char input = static_cast<char>(ch);
+	return input;
 }
 #endif 
 
