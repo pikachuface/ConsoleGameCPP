@@ -1,6 +1,13 @@
-#include<iostream>
-#include<thread>
+#ifdef WIN32
 #include<conio.h>
+#else
+#include <termios.h>
+#include <unistd.h>
+#endif 
+
+#include<stdio.h>
+#include<ctype.h>
+#include<thread>
 #include<chrono>
 //Tools
 #include"Tools.h"
@@ -12,9 +19,11 @@
 
 using namespace std;
 
+
 void GameLoop();
 void Rendering();
 void KeyRegistering();
+char getInput();
 GameObject makeGameObject(int posX, int posY, char render, Colors color);
 
 Snake snake;
@@ -92,5 +101,24 @@ GameObject makeGameObject(int posX, int posY, char render, Colors color)
 	GameObject temp(posX, posY, render, color);
 	return temp;
 }
+
+#if WIN32
+char getInput()
+{
+	return _getch();
+}
+#else
+char getch(void) {
+	struct termios oldattr, newattr;
+	int ch;
+	tcgetattr(STDIN_FILENO, &oldattr);
+	newattr = oldattr;
+	newattr.c_lflag &= ~(ICANON | ECHO);
+	tcsetattr(STDIN_FILENO, TCSANOW, &newattr);
+	ch = getchar();
+	tcsetattr(STDIN_FILENO, TCSANOW, &oldattr);
+	return (char)ch;
+}
+#endif 
 
 
