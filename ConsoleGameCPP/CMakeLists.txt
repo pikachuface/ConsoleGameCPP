@@ -1,6 +1,6 @@
-project (ConsoleGameCPP)
+cmake_minimum_required(VERSION 3.15.0)
 
-add_library()
+project (ConsoleGameCPP)
 
 file(GLOB_RECURSE _HDRFILES ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 file(GLOB_RECURSE _SRCFILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
