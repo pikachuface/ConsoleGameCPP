@@ -19,11 +19,13 @@ public:
 			setBackgroundColor(backgrndColor);
 		}
 
-		moveCursorTo(posY + Settings::borderOffset, posX + Settings::borderOffset);
-		printf("%c", asciRender);
+		moveCursorTo(posY + Settings::borderOffset, (posX + Settings::borderOffset) * 2);
+		printf("%c%c", asciRender, asciRender);
 
-		moveCursorTo(Settings::mapHeight + Settings::borderCompensation, Settings::mapWidth + Settings::borderCompensation);
+		moveCursorTo(Settings::mapHeight + Settings::borderCompensation, (Settings::mapWidth + Settings::borderCompensation + 1)  * 2);
 	}
+
+
 };
 
 

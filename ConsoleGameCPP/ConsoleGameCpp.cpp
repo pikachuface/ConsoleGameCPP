@@ -25,17 +25,20 @@ void GameLoop();
 void Rendering();
 void KeyRegistering();
 char getInput();
-GameObject makeGameObject(int posX, int posY, char render, Colors color);
+static GameObject makeGameObject(int posX, int posY, char render, Colors colorTxt = Colors::WHITE_TXT, Colors colorBck = Colors::BLACK_BKG);
 
-Snake snake(makeGameObject(Settings::mapWidth / 2, Settings::mapHeight / 2, '#', Colors::GREEN_TXT));
-Food food(10, 20, 0, 0, '@', Colors::RED_TXT, Colors::RED_BKG);
+Snake snake(makeGameObject(Settings::mapWidth / 2, Settings::mapHeight / 2, '#', Colors::CYAN_TXT, Colors::CYAN_BKG));
+Food food(10, 10, 0, 0, '@', Colors::RED_TXT, Colors::RED_BKG);
 
 Timer timer;
-bool gameOver = false;
 thread keyregister;
 thread rendering;
-
 double timeDelta;
+
+
+bool gameOver = false;
+int score = 0;
+
 
 int main()
 {
@@ -51,10 +54,15 @@ void GameLoop()
 {
 	while (!gameOver)
 	{
-		if (timeDelta*1000 > Settings::timerInterval)
+		if (timeDelta * 1000 > Settings::timerInterval)
 		{
 			timeDelta = 0;
-			snake.Move();
+			if (snake.Move()) gameOver = true;
+			if (snake.body[0].posX == food.posX && snake.body[0].posY == food.posY)
+			{
+				snake.addBodyPart(makeGameObject(Settings::mapWidth / 2, Settings::mapHeight / 2, '#', Colors::GREEN_TXT, Colors::GREEN_BKG));
+				score += food.getEaten();
+			}
 		}
 		timeDelta += timer.restart();
 	}
@@ -95,12 +103,12 @@ void KeyRegistering()
 }
 
 
-
-GameObject makeGameObject(int posX, int posY, char render, Colors color)
+GameObject makeGameObject(int posX, int posY, char render, Colors colorTxt, Colors colorBck)
 {
-	GameObject temp(posX, posY, render, color);
+	GameObject temp(posX, posY, render, colorTxt, colorBck);
 	return temp;
 }
+
 
 #if WIN32
 char getInput()

@@ -3,7 +3,7 @@
 class Settings
 {
 public:
-	static const unsigned int mapWidth = 40;
+	static const unsigned int mapWidth = 20;
 	static const unsigned int mapHeight = 20;
 	static const unsigned int timerInterval = 80;
 	static const char defaultChar = ' ';
@@ -22,8 +22,8 @@ public:
 				{
 					setTextColor(textBorderColor);
 					setBackgroundColor(backgrColor);
-					moveCursorTo(y + Settings::borderOffset, x + Settings::borderOffset);
-					printf("%c", borderChar);
+					moveCursorTo(y + Settings::borderOffset, (x + Settings::borderOffset)*2);
+					printf("%c%c", borderChar,borderChar);
 				}
 			}
 		}

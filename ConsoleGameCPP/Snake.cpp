@@ -38,8 +38,10 @@ void Snake::ChangeDir(Directions dir)
 	}
 }
 
-void Snake::Move()
+bool Snake::Move()
 {
+	bool hitItself = false;
+
 	lastDir = curDir;
 
 	int lastHeadPosX = body[0].posX;
@@ -64,23 +66,33 @@ void Snake::Move()
 	for (int i = this->body.size() - 1; i >= 0; i--)
 	{
 		if (i == 1)
+		{
 			body[i].moveTo(lastHeadPosX, lastHeadPosY);
+		}
 		else if (i != 0)
+		{
 			body[i].moveTo(body[i - 1].posX, body[i - 1].posY);
+		}
 	}
-	if (body[0].posX > Settings::mapWidth + Settings::borderOffset || body[0].posX < 0 || body[0].posY>Settings::mapHeight + Settings::borderOffset || body[0].posY < 0)
+	if (body[0].posX > Settings::mapWidth || body[0].posX < 1 || body[0].posY>Settings::mapHeight || body[0].posY < 1)
 	{
-		if (body[0].posY > Settings::mapHeight&& lastDir == Directions::Down)
-			body[0].moveTo(body[0].posX,  Settings::borderOffset);
+		if (body[0].posY > Settings::mapHeight + 1 && lastDir == Directions::Down)
+			body[0].moveTo(body[0].posX, 1);
 
 		else if (body[0].posY < Settings::borderOffset && lastDir == Directions::Up)
-			body[0].moveTo(body[0].posX, Settings::mapHeight);
+			body[0].moveTo(body[0].posX, Settings::mapHeight + 1);
 
-		else if (body[0].posX > Settings::mapWidth&& lastDir == Directions::Right)
-			body[0].moveTo(Settings::borderOffset, body[0].posY);
+		else if (body[0].posX > Settings::mapWidth + 1 && lastDir == Directions::Right)
+			body[0].moveTo(1, body[0].posY);
 
 		else if (body[0].posX < Settings::borderOffset && lastDir == Directions::Left)
-			body[0].moveTo(Settings::mapWidth, body[0].posY);
+			body[0].moveTo(Settings::mapWidth + 1, body[0].posY);
 	}
+	return hitItself;
+}
+
+void Snake::addBodyPart(GameObject bodyPart)
+{
+	body.push_back(bodyPart);
 }
 

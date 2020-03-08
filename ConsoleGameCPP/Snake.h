@@ -14,8 +14,8 @@ public:
 	Snake(GameObject head, int lives = 1);
 	Snake();
 	void ChangeDir(Directions newDir);
-	void Move();
+	bool Move();
+	void addBodyPart(GameObject bodyPart);
 private:
-	void addBodyPart();
 };
 

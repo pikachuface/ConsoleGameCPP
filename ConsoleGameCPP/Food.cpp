@@ -8,10 +8,12 @@ Food::Food(int minValue, int maxValue, int posX, int posY, char asciRender, Colo
 	this->getEaten();
 }
 
-void Food::getEaten()
+int Food::getEaten()
 {
+	int score = this->value;
 	this->changeValue();
 	this->changeLoacation();
+	return score;
 }
 
 void Food::changeLoacation()

@@ -13,7 +13,7 @@ public:
 	//Ctor
 	Food(int minValue, int maxvalue, int posX, int posY, char asciRender, Colors txtColor = Colors::WHITE_TXT, Colors bckColor = Colors::BLACK_BKG);
 	//If food gets eaten
-	void getEaten();
+	int getEaten();
 private:
 	//Changes location of object to random Pos
 	void changeLoacation();
