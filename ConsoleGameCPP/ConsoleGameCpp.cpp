@@ -3,12 +3,12 @@
 #else
 #include <termios.h>
 #include <unistd.h>
+#include<pthread.h>
 #endif 
 
 #include<stdio.h>
 #include<ctype.h>
 #include<thread>
-#include<pthread.h>
 #include<chrono>
 //Tools
 #include"Tools.h"
@@ -41,9 +41,7 @@ int main()
 {
 	Settings::MakeBorder(Colors::YELLOW_TXT, YELLOW_BKG);
 	keyregister = thread(&KeyRegistering);
-	keyregister.detach();
 	rendering = thread(&Rendering);
-	keyregister.detach();
 	timer.restart();
 	GameLoop();
 	return 0;
