@@ -27,7 +27,7 @@ void KeyRegistering();
 char getInput();
 static GameObject makeGameObject(int posX, int posY, char render, Colors colorTxt = Colors::WHITE_TXT, Colors colorBck = Colors::BLACK_BKG);
 
-Snake snake(makeGameObject(Settings::mapWidth / 2, Settings::mapHeight / 2, '#', Colors::CYAN_TXT, Colors::CYAN_BKG));
+Snake snake(makeGameObject(Settings::mapWidth / 2, Settings::mapHeight / 2, '#', Colors::MAGENTA_TXT, Colors::MAGENTA_BKG));
 Food food(10, 10, 0, 0, '@', Colors::RED_TXT, Colors::RED_BKG);
 
 Timer timer;
@@ -42,6 +42,7 @@ int score = 0;
 
 int main()
 {
+	clearScreen();
 	Settings::MakeBorder(Colors::YELLOW_TXT, YELLOW_BKG);
 	keyregister = thread(&KeyRegistering);
 	rendering = thread(&Rendering);

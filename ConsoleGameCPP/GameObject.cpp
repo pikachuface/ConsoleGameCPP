@@ -3,10 +3,9 @@
 
 GameObject::GameObject(int posX, int posY, char asciRender, Colors txtColor, Colors bckColor)
 {
-	this->posX = posX;
-	this->posY = posY;
-	this->lastPosX = -69;
-	this->lastPosY = -69;
+	moveTo(posX, posY);
+	this->lastPosX = 1;
+	this->lastPosY = 1;
 	this->asciRender = asciRender;
 	this->txtColor = txtColor;
 	this->bckColor = bckColor;
@@ -37,12 +36,12 @@ void GameObject::render(bool overrideRender, bool deleteOldOne)
 {
 	if (this->changedPos || overrideRender)
 	{
-		//Print new one
 		if (deleteOldOne)
 		{
 			//Delete old char
 			Tools::printCharacter(this->lastPosX, this->lastPosY, Settings::defaultChar);
 		}
+		//Print new one
 		Tools::printCharacter(this->posX, this->posY, this->asciRender, this->txtColor, this->bckColor);
 
 		this->changedPos = false;
