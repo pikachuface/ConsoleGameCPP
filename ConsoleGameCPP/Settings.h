@@ -1,4 +1,5 @@
 #pragma once
+#include"ansi_escapes.h"
 
 class Settings
 {
