@@ -3,14 +3,12 @@
 project=ConsoleGameCPP
 
 builddir=Build
-scrdir=ConsoleGameCPP
 
+pushd ../
+rootdir=$PWD
 
-mkdir ${builddir}
-cd ${builddir}
+mkdir -p ${builddir}
+pushd ${builddir}
 
-cmake -G "Unix Makefiles" ../ 
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ${rootdir}  
 
-cd ../
-
-cmake --build -S ${scrdir} -B ${builddir}
