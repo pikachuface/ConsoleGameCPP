@@ -1,28 +1,40 @@
-# Snake game that runs in Console
+# Snake game that runs in **Console**
 
-**info**: the game is **not** completed
+## How to setup the app
 
-## Setup the game
-- **GCC Windows/Linux**
+There are two directories in which you can find the build script for **CMake**:
+- Linux
+- Windows
+---
+## **Linux**
 
-- You will need to have gcc installed and the working directory should be the folder with .cpp files
-- Then you just write these commands and the game will be compiled
-- Depending on your system there should be file called Snakegame.exe/.o and that is your binary
-
-```bash
-$ gcc -c *.cpp 
-$ gcc -c *.c
-$ gcc -o Snakagame *.o
+Go to the _Linux_ folder and run the _Build.sh_
+Then go to the _ConsoleGameCPP/Build_ folder which was created by the script and run:
+```sh
+make 
 ```
-If *.cpp doesnt work you will need to write the files **separately**.
+And with that you should see the **ConsoleGameCPP binary** somewhere in the _Build_ folder.
 
 ---
+## **Windows**
 
-- **Visual Studio Windows**
+On windows you can choose between **MinGW**or **MS Visual Studio**.
 
-- You will need to have Visual Studio installed with C++ SDK
-- When you have Visual Studio installed all you need to do is make new C++ project and then copy all the files in your project and run the program
+- **MinGW(gcc)**
+<br>
+Run the _BuildGCC.bat_ which will crate and build the _gcc_ solution.
+Then just go to the _ConsoleGameCPP/Build folder_ and somewhere in the folder you should be able to see the **ConsoleGameCPP.exe**
 
-**enjoy**
+- **MS Visual Studio(.sln)**
+<br>
+ Run the _MakeSln.bat_ which will crate _MS Visual Studio 2019_ solution.
+Then just go to the _ConsoleGameCPP/Build folder_ and somewhere in the folder you should be able to see the **ConsoleGameCPP.sln** which you just open in Visual Studio in which you can build the app. 
+
+
+
+
+
+
+
 
 
