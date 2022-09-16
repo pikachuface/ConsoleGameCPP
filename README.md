@@ -21,12 +21,14 @@ And with that you should see the **ConsoleGameCPP binary** somewhere in the _Bui
 On windows you can choose between **MinGW**or **MS Visual Studio**.
 
 - **MinGW(gcc)**
-<br>
-Run the _BuildGCC.bat_ which will crate and build the _gcc_ solution.
+
+
+Run the *BuildGCC.bat* which will crate and build the _gcc_ solution.
 Then just go to the _ConsoleGameCPP/Build folder_ and somewhere in the folder you should be able to see the **ConsoleGameCPP.exe**
 
 - **MS Visual Studio(.sln)**
-<br>
+
+
  Run the _MakeSln.bat_ which will crate _MS Visual Studio 2019_ solution.
 Then just go to the _ConsoleGameCPP/Build folder_ and somewhere in the folder you should be able to see the **ConsoleGameCPP.sln** which you just open in Visual Studio in which you can build the app. 
 
